@@ -1,0 +1,87 @@
+1.
+
+def anagram(s,l):
+    for word in l:
+        for letter in word:
+            if letter not in s:
+                return False
+            return True
+
+
+print(anagram("Justin Bieber", ["injures", "ebb", "it"]))
+print(anagram("Natalie Portman", ["ornamental", "pita"]))
+print(anagram("Chris Pratt", ["chirps", "rat"])) 
+print(anagram("Jeff Goldblum", ["jog", "meld", "bluffs"]))
+
+
+2.
+
+
+from operator import itemgetter
+
+def leaderboard(l):
+    return sorted(l, reverse=True, key = lambda k : k['score'] + k['reputation'] * 2 )
+
+print(leaderboard([{ "name": "a", "score": 100, "reputation": 20 }, { "name": "b", "score": 90, "reputation": 40 }, { "name": "c", "score": 115, "reputation"}
+
+
+3.
+
+
+def hangman(s,l):
+    for letter in s:
+        if letter.lower() not in l and letter != '"':
+            s = s.replace(letter,'-')
+            
+    return s
+
+print(hangman("helicopter", ["o", "e", "s"]))
+print(hangman("tree", ["r", "t", "e"]) )
+print(hangman("Python rules", ["a", "n", "p", "r", "z"]) )
+print(hangman('He"s a very naughty boy!', ["e", "a", "y"]))
+
+
+4.
+
+
+def max_collatz(n):
+    l = [n]
+    i = 0
+    while l[-1] != 1:
+        if l[i] % 2 ==0:
+            l.append(l[i] / 2)
+        else:
+            l.append(l[i] * 3 + 1)
+        i += 1    
+    return list(map(int,l))
+
+print(max_collatz(10))
+print(max_collatz(32))
+print(max_collatz(85))
+
+
+5.
+
+
+def digit_sort(l):
+    
+    l = list(map(str,l))
+    
+    l = sorted(l, key = len, reverse=True)
+    
+    for i in range(len(l)):
+        for j in range(i,len(l)):
+            if len(l[i]) == len(l[j]):
+                if l[j] < l[i]:
+                    temp = l[i]
+                    l[i] = l[j]
+                    l[j] = temp
+    return list(map(int,l))
+
+print(digit_sort([77,23,5,7,101]))
+print(digit_sort([1, 5, 9, 2, 789, 563, 444]))
+print(digit_sort([53219, 3772, 564, 32, 1]))
+
+
+
+
